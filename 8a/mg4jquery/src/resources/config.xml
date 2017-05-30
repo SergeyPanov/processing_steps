@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mg4jconfig>
+	<head>
+		<host/>
+		<document/>
+		<thread/>
+		<title/>
+		<uri/>
+	</head>
+	<!-- Configuration for list of servers -->
+	<servers>
+		<!-- Use this file as input -->
+		<hosts></hosts>
+		<!-- Default port if port isn't specified -->
+		<port></port>
+		<!-- timeout -->
+		<timeout>15</timeout>
+		<style>raw</style>
+		<field></field>
+		<snippets>501</snippets>
+	</servers>
+
+
+
+	<format>
+		<attributes>
+		</attributes>
+		<nertags>
+			<all/>
+		</nertags>
+	</format>
+
+	<dye>
+		<person>red</person>
+		<artist>black</artist>
+		<location>Red</location>
+		<artwork>magenta</artwork>
+		<event>yellow</event>
+		<museum>Light gray</museum>
+		<family>Light green</family>
+		<group>Green</group>
+		<nationality>Light cyan</nationality>
+		<form>Light red</form>
+		<mythology>Green</mythology>
+		<medium>Light yellow</medium>
+		<movement>Yellow</movement>
+		<genre>Red</genre>
+		<date>green</date>
+		<interval>Light blue</interval>
+	</dye>
+
+</mg4jconfig>

@@ -1,0 +1,268 @@
+fields:
+- position
+- token
+- tag
+- lemma
+- parpos
+- function
+- parword
+- parlemma
+- paroffset
+- link
+- length
+- docuri
+- lower
+- nerid
+- nertag
+- param0
+- param1
+- param2
+- param3
+- param4
+- param5
+- param6
+- param7
+- param8
+- param9
+- nertype
+- nerlength
+
+nertagField: nertag
+
+#FIXME: convert to custom deserializers so that we can write Lisp sexprs unquoted!
+entities:
+    common:
+        data-position: position
+        data-tag: tag
+        data-lemma: lemma
+        data-function: function
+        data-parpos: parpos
+        data-parlemma: parlemma
+        data-parword: parword
+        data-paroffset: paroffset
+        target: "\"_blank\""
+        href: "(if param0 param0 param0)"
+        
+    non-entity:
+        style: "\"text-decoration:none;font-weight:bold;color:Black\""
+    entity:
+        data-nertag: nertag
+        data-link: link
+        data-length: length
+        data-docuri: docuri
+        data-nertype: nertype
+        data-nerlength: nerlength
+        data-image: param1
+        
+    artist:
+        style: "\"text-decoration:none;font-weight:bold;color:DarkCyan\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-gender:      "(if (eq param3 \"M\") \"male\" \"female\")"
+        data-birthplace:  "(subst #\\_ #\\  param4)"
+        data-birthdate:   "(subst #\\_ #\\- param5)"
+        data-deathplace:  "(subst #\\_ #\\  param6)"
+        data-deathdate:   "(subst #\\_ #\\- param7)"
+        data-role:        "(subst #\\_ #\\  (replace \"|\" \", \" param8))"
+        data-nationality: "(subst #\\_ #\\  (replace \"|\" \", \" param9))"
+    artwork:
+        style: "\"text-decoration:none;font-weight:bold;color:DarkGreen\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-form:        "(subst #\\_ #\\  (replace \"|\" \", \" param3))"
+        data-datebegun:   "(subst #\\_ #\\- param4)"
+        data-datecompleted: "(subst #\\_ #\\- param5)"
+        data-movement:    "(subst #\\_ #\\  param6)"
+        data-genre:       "(subst #\\_ #\\  (replace \"|\" \", \" param7))"
+        data-author:      "(subst #\\_ #\\  (replace \"|\" \", \" param8))"
+    event:
+        style: "\"text-decoration:none;font-weight:bold;color:Olive\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-startdate:   "(subst #\\_ #\\- param3)"
+        data-enddate:     "(subst #\\_ #\\- param4)"
+        data-location:    "(subst #\\_ #\\  (replace \"|\" \", \" param5))"
+    person:
+        style: "\"text-decoration:none;font-weight:bold;color:DarkMagenta\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-gender:      "(if (eq parm3 \"M\") \"male\" \"female\")"
+        data-birthplace:  "(subst #\\_ #\\  param4)"
+        data-birthdate:   "(subst #\\_ #\\- param5)"
+        data-deathplace:  "(subst #\\_ #\\  param6)"
+        data-deathdate:   "(subst #\\_ #\\- param7)"
+        data-profession:  "(subst #\\_ #\\  (replace \"|\" \", \" param8))"
+        data-nationality: "(subst #\\_ #\\  (replace \"|\" \", \" param9))"
+    location:
+        style: "\"text-decoration:none;font-weight:bold;color:GoldenRod\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-country:     "(subst #\\_ #\\  param3)"
+    date:
+        style: "\"text-decoration:none;font-weight:bold;color:Fuchsia\""
+        data-date: "(concatenate (or param2 \"0\") \"-\" (or param3 \"0\") \"-\" (or param4 \"0\"))"
+    interval:
+        style: "\"text-decoration:none;font-weight:bold;color:DeepPink\""
+        data-from: "(concatenate (or param2 \"0\") \"-\" (or param3 \"0\") \"-\" (or param4 \"0\"))"
+        data-to:   "(concatenate (or param5 \"0\") \"-\" (or param6 \"0\") \"-\" (or param7 \"0\"))"
+    museum:
+        style: "\"text-decoration:none;font-weight:bold;color:FireBrick\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-type:        "(subst #\\_ #\\  (replace \"|\" \", \" param3))"
+        data-established: "(subst #\\_ #\\- param4)"
+        data-director:    "(subst #\\_ #\\  param5)"
+        data-location:    "(subst #\\_ #\\  param6)"
+    form:
+        style: "\"text-decoration:none;font-weight:bold;color:DimGrey\""
+        data-name:        "(subst #\\_ #\\  param2)"
+    medium:
+        style: "\"text-decoration:none;font-weight:bold;color:DodgerBlue\""
+        data-name:        "(subst #\\_ #\\  param2)"
+    genre:
+        style: "\"text-decoration:none;font-weight:bold;color:Indigo\""
+        data-name:        "(subst #\\_ #\\  param2)"
+    movement:
+        style: "\"text-decoration:none;font-weight:bold;color:Maroon\""
+        data-name:        "(subst #\\_ #\\  param2)"
+    nationality:
+        style: "\"text-decoration:none;font-weight:bold;color:MediumBlue\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-country:     "(subst #\\_ #\\  (replace \"|\" \", \" param3))"
+    mythology:
+        style: "\"text-decoration:none;font-weight:bold;color:MediumSlateBlue\""
+        data-name:        "(subst #\\_ #\\  param2)"
+    family:
+        style: "\"text-decoration:none;font-weight:bold;color:SaddleBrown\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-role:        "(subst #\\_ #\\  (replace \"|\" \", \" param3))"
+        data-nationality: "(subst #\\_ #\\  (replace \"|\" \", \" param4))"
+        data-director:    "(subst #\\_ #\\  (replace \"|\" \", \" param5))"
+    group:
+        style: "\"text-decoration:none;font-weight:bold;color:Peru\""
+        data-name:        "(subst #\\_ #\\  param2)"
+        data-role:        "(subst #\\_ #\\  (replace \"|\" \", \" param3))"
+        data-nationality: "(subst #\\_ #\\  (replace \"|\" \", \" param4))"
+
+remapTags: "position|token|tag|lemma|parpos|function|parword|paroffset|parlemma|paroffset|nerid|nertag|param0|para1|param2|param3|param4|param5|param6|param7|param8|param9"
+remapTagsTo: "token"
+style: HTML
+field: "token"
+mapping:
+  person:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    gender: "param3"
+    birthplace: "param4"
+    birthdate: "param5"
+    deathplace: "param6"
+    deathdate: "param7"
+    profession: "param8"
+    nationality: "param9"
+  artist:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    gender: "param3"
+    birthplace: "param4"
+    birthdate: "param5"
+    deathplace: "param6"
+    deathdate: "param7"
+    role: "param8"
+    nationality: "param9"
+  location:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    country: "param3"
+  artwork:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    form: "param3"
+    datebegun: "param4"
+    datecompleted: "param5"
+    movement: "param6"
+    genre: "param7"
+    author: "param8"
+  event:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    startdate: "param3"
+    enddate: "param4"
+    location: "param5"
+  museum:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    type: "param3"
+    estabilished: "param4"
+    director: "param5"
+    location: "param6"
+  family:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    role: "param3"
+    nationality: "param4"
+    members: "param5"
+  group:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    role: "param3"
+    nationality: "param4"
+  nationality:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+    country: "param3"
+  form:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+  mythology:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+  medium:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+  movement:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+  genre:
+    url: "param0"
+    image: "param1"
+    name: "param2"
+  date:
+    year: "param2"
+    month: "param3"
+    date: "param4"
+  interval:
+    fromyear: "param2"
+    frommonth: "param3"
+    fromday: "param4"
+    toyear: "param5"
+    tomonth: "param6"
+    today: "param7"
+dye:
+  person: "Blue" #Blue
+  artist: "Blue" #Blue
+  location: "Dark gray" #Dark gray
+  artwork: "Magenta" #Magenta
+  event: "Light magenta" #Light magenta
+  museum: "Light gray" #Light gray
+  family: "Light green" #Light green
+  group: "Green" #Green
+  nationality: "Light cyan" #Light cyan
+  form: "Light red" #Light red
+  mythology: "Cyan" #Cyan
+  medium: "Light yellow" #Light yellow
+  movement: "Yellow" #Yellow
+  genre: "Red" #Red
+  date: "Light blue" #Light blue
+  interval: "Light blue" #Light blue
+
+nonDuplicateFields:
+- href
+- style
+- nertag
